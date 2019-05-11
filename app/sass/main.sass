@@ -23,6 +23,9 @@ body
 			border-color: red
 		&:required:valid
 			border-color: green
+.page
+	overflow: hidden
+
 
 .img-responsive
 	display: block
@@ -34,22 +37,11 @@ body
 .text-center
 	text-align: center
 
-.conteiner
+.container
 	width: 100%
-	max-width: 1200px
+	max-width: 1230px
 	margin: 0 auto
-
-
-hr 
-	display: block
-	width: 100%
-	height: 1px
-	margin: 40px 0
-
-	border: 0
-	background-color: #e5e5e5
-
-
+	padding: 0 15px
 
 
 .nav ul
@@ -117,6 +109,55 @@ li a
 		display: block
 		opacity: 1
 
+.nav__toggle
+	display: none
+	width: 30px
+	padding: 10px 0
+
+	font-size: 0
+	color: transparent
+
+	border: 0 
+	background: none
+	cursor: pointer
+
+	position: absolute
+	top: 24px
+	right: 24px
+	z-index: 1
+
+	&-item
+		display: block
+		width: 100%
+		height: 3px
+
+		background-color: #fff
+
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		margin: auto 
+
+		&:before,&:after
+			content: ""
+			width: 100%
+			height: 3px
+			
+			background-color: #fff
+			
+			position: absolute
+			left: 0
+			z-index: 1
+
+		&:before
+			top: -8px
+
+		&:after
+			bottom: -8px 		
+
+
 // -----------------------------------INTRO
 .intro
 	display: flex
@@ -124,19 +165,22 @@ li a
 	justify-content: center
 	width: 100%
 	height: 100vh
+	min-height: 650px
+	position: relative
 
 	background: linear-gradient(to bottom, rgba(244, 142, 131, .90) 0%, rgba(252, 226, 138, .90) 100%), url(../img/bgpicture.png) center no-repeat  
 	background-size: cover
 
 	&__suptitle
+		
 		font-family: $two-font
-		font-size: 3em
+		font-size: 	52px
 		color: $text2
 	
-		margin-bottom: 20px
+		margin-bottom: 10px
 
 	&__title
-		font-size: 6em
+		font-size: 120px
 		font-weight: 700
 		text-transform: uppercase
 	
@@ -149,15 +193,14 @@ li a
 			width: 60px
 			height: 3px
 			background-color: #fff
-			margin: 60px auto
+			margin: 30px auto
 			 
 
 	&__inner
+		// margin: auto 0 
 		width: 100%
-		max-width: 880px
-		margin: 0 auto 
+		// margin: 0 auto 
 		text-align: center
-
 // -----------------------------------HEADER
 .header
 	padding-top: 30px
@@ -180,10 +223,23 @@ li a
 		font-weight: bold
 		color: $text2
 
+	&--fixed
+		padding: 10px 0 
+		
+		background-color: #eb8b8d
+		box-shadow: 0 5px 10px rgba(0, 0, 0, .2)
+
+		position: fixed
+		top: 0 
+		left: 0
+		right: 0 
+
+		transform: translate3d(0, 0, 0 ) 
 
 // --------------------BUTTON
 
 .btn
+	position: relative
 	display: inline-block
 	vertical-align: top
 	padding: 8px 30px 
@@ -209,6 +265,7 @@ li a
 	position: absolute
 	bottom: 0
 	left: 0
+	right: 0
 	z-index: 1
 
 	
@@ -253,8 +310,8 @@ li a
 // -----------------------------SECTION
 
 .section
-	padding: 110px 0
-
+	padding: 80px 0
+	
 	&__header
 		width: 100%
 		max-width: 950px
@@ -286,16 +343,32 @@ li a
 	// -------------------------CARD
 
 .card
-	margin-top: 80px
-	display: flex
+	margin: 80px -15px 0
+	display: flex 
+	flex-wrap: wrap
 	justify-content: space-between
 
+	&__item
+		width: 33.33333%
+		padding: 0 15px
+
+	&__img
+		background: linear-gradient(to bottom, #fce38a, $accent)
+		transition: transform .2s linear
+		
+		img
+			
+			display: block
+			width: 100% 
+			max-width: 100%
+			height: auto
+			transition: opacity .1s linear
+			
+		
 	&__inner
 			
 		position: relative
 		background-color: $liblue
-		
-	
 
 		&:hover
 			.card__text
@@ -306,18 +379,7 @@ li a
 				img
 					
 					opacity: .1 
-	&__item
- 
 	
-	&__img
-		background: linear-gradient(to bottom, #fce38a, $accent)
-		transition: transform .2s linear
-		
-
-		img
-			display: block
-			transition: opacity .1s linear
-		
 
 
 	&__text
@@ -358,6 +420,7 @@ li a
 
 .stat
 	display: flex
+	flex-wrap: wrap
 
 	&__item
 		flex: 1 1 0
@@ -385,14 +448,16 @@ li a
 // --------------------------------services
 .services
 	display: flex
-
+	flex-wrap: wrap
 
 	&__item
-		flex: 1 1 0
-		
-		padding-left: 80px
-		padding-right: 35px
+		width: 33.33333%
+		padding: 0 35px 40px 85px
 		position: relative
+		margin-bottom: 40px
+
+		&--bottom
+			border-bottom: 1px solid #e5e5e5
 
 	&__icon
 		position: absolute
@@ -445,7 +510,8 @@ li a
 
 	&__item
 		display: block
-		
+		max-width: 100%
+		height: auto
 	
 		&-iphone
 			position: absolute
@@ -456,13 +522,18 @@ li a
 			// ------wedo
 .wedo
 	display: flex
-	
+	flex-wrap: wrap
+	margin: -15px
+
 	&__item
 		width: 50%
-
+		padding: 0 15px
 		.img 
 			padding: 0 30px
-		
+	&__img
+		display: block
+		max-width: 100%
+		height: auto		
 //------- accordion
 
 .accordion
@@ -547,6 +618,9 @@ li a
 		position: relative
 	
 	&__photo
+		display: block
+		width: 210px
+		height: 210xp
 		border: 2px solid $liblue
 		border-radius: 50%
 		
@@ -611,7 +685,15 @@ li a
 	display: flex
 	justify-content: space-between
 	align-items: center
+	margin: 0 -15px
 
+	&__items
+		padding: 0 15px
+		
+	&__img
+		display: block
+		max-width: 100%
+		height: auto
 .works
 	display: grid
 	grid-template-columns: repeat(4, 1fr)
@@ -633,7 +715,7 @@ li a
 		display: block
 		max-width: 100%
 		height: auto
-
+		width: 100%
 		transition: opacity .2s linear
 
 	&__info
@@ -722,6 +804,7 @@ li a
 
 .blog
 	display: flex
+	flex-wrap: wrap
 	justify-content: space-between
 
 
@@ -820,6 +903,7 @@ li a
 	padding-top: 65px
 
 	background-color: #f8f8f8 
+		
 
 	&__col
 
@@ -842,6 +926,7 @@ li a
 
 	&__inner
 		display: flex
+		flex-wrap: wrap
 		padding-bottom: 65px
 		justify-content: space-between
 
@@ -971,25 +1056,24 @@ li a
 
 // ----------------instagram
 .instagram
-	// display: flex
+	display: flex
 	// // grid-template: repeat(3, 1fr) / repeat(3, 93px)
-	// flex-wrap: wrap
+	flex-wrap: wrap
 	display: grid
 	grid-template-columns: repeat(3, 90px)
 	grid-template-rows: repeat(3, 90px)
 	grid-gap: 1px
 
 	&__item
-		
-		// width: 33.33333%
+		// width: 33%
 		// flex: 1 1 0 
 		// border: 1px solid $text2
 		
 		img
 			display: block
+			max-width: 100%
+			height: auto
 			width: 100%
-			height: 90px
-			
 	&__text 
 		padding-top: 20px
 		a
@@ -1006,20 +1090,6 @@ li a
 	color: $text
 	span
 		color: $accent
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

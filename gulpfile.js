@@ -20,7 +20,7 @@ gulp.task('browser-sync', function() {
 		},
 		notify: false,
 		// open: false,
-		// online: false, // Work Offline Without Internet Connection
+		// online: true, // Work Offline Without Internet Connection
 		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
 	})
 });
@@ -83,30 +83,3 @@ if (gulpversion == 4) {
 	});
 	gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
 }
-
-gulp.task('imagemin', function() {
-	return gulp.src('app/img/**/*')
-	.pipe(cache(imagemin())) // Cache Images
-	.pipe(gulp.dest('dist/img')); 
-});
-
-gulp.task('build', ['removedist', 'imagemin', 'sass', 'js'], function() {
-
-	var buildFiles = gulp.src([
-		'app/*.html',
-		'app/.htaccess',
-		]).pipe(gulp.dest('dist'));
-
-	var buildCss = gulp.src([
-		'app/css/main.min.css',
-		]).pipe(gulp.dest('dist/css'));
-
-	var buildJs = gulp.src([
-		'app/js/scripts.min.js',
-		]).pipe(gulp.dest('dist/js'));
-
-	var buildFonts = gulp.src([
-		'app/fonts/**/*',
-		]).pipe(gulp.dest('dist/fonts'));
-
-});
